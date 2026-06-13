@@ -1,0 +1,11 @@
+# 保护路径清单（spec-harness）。放到新仓库 .specharness/protected.txt。
+# 改动其中任一文件的提交，commit message 必须含一行 OVERRIDE: <原因>，否则被 commit-msg 钩子拦下。
+# 每行一个路径或 glob（目录写前缀即可，如 contracts/ 覆盖其下全部）。
+#
+# 含本文件自身——防止「删清单来解除守卫」（自指保护）。
+.specharness/protected.txt
+docs/srs.md
+docs/architecture.md
+contracts/
+tests/contract/
+.env

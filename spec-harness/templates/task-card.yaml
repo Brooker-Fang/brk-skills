@@ -1,0 +1,17 @@
+# 任务卡模板（spec-harness）。一卡一文件，放 tasks/，文件名加序号前缀控领卡顺序：
+#   tasks/30-<id>.yaml
+# done 状态不存在本文件里——它从产物派生：reports/<id>.md 存在 且 git log 命中 [card:<id>]。
+
+id: <kebab-case-id>            # 唯一标识，commit message 用 [card:<id>] 引用
+type: feat                     # feat / fix / chore / test ...
+goal: <一句话说清这张卡要交付什么>
+scope: >                       # 负向边界！写明"仅改 X、不碰 Y"——escalate 与防蔓延的依据
+  仅 <path/to/module> + 对应测试；不碰 contracts / 其它模块 / prompt 资产
+owner: <agent 名字>            # 领卡归属 = git config team.agent
+deps: [<前置卡 id 或冻结点，如 contracts-frozen>]   # 依赖图；依赖未满足不应开工
+must_read:                     # 精确 spec 节/文件——新会话只加载这些，不通读全仓
+  - docs/srs.md#<条款或小节>
+  - docs/architecture.md#<模块>
+covers: [<SRS 条款 ID，如 G-RT-1>]   # 这张卡负责让哪些条款测试转绿（可空）
+dod: >                         # 完成定义，客观可判
+  covers 所列条款测试全绿 + 本地质量门过 + docstring/注释标条款 ID
