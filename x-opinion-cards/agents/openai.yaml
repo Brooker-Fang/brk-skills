@@ -1,0 +1,4 @@
+interface:
+  display_name: "X 观点图文"
+  short_description: "分批采集指定数量的 X 成长观点，建立观点库并生成纯文字图文"
+  default_prompt: "用 $x-opinion-cards 从 Dan Koe 分批采集 20 条合格观点，先建立观点库并列出来，不制图。"
